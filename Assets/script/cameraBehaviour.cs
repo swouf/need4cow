@@ -31,6 +31,7 @@ public class cameraBehaviour : MonoBehaviour {
 		float dx		= dt*speed;
 
 		float camX = transform.position.x;
-		transform.position = new Vector3(camX + dx, 0, camZ);
+		float camY = transform.position.y;
+		transform.position = new Vector3(camX + dx, camY, camZ);
 	}
 }
