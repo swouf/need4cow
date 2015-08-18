@@ -3,12 +3,9 @@ using System.Collections;
 
 public class worldSwitch : MonoBehaviour {
 	public bool isRedActive;
-	public bool isBlueActive;
 	// Use this for initialization
 	void Start () {
-		if(isRedActive) {
-			isBlueActive = false;
-		}
+		Debug.Log("worldSwitch Initialization...");
 	}
 
 	// Update is called once per frame
@@ -16,13 +13,19 @@ public class worldSwitch : MonoBehaviour {
 
 		if(Input.GetKeyDown("s")) {
 			Debug.Log("Switching !");
-			switchWorld();
+			this.switchWorld();
 		}
 	}
 	void switchWorld() {
 		if(isRedActive) {
-			GameObjects[] toActivateList = FindGameObjectsWithTag("red");
-			GameObjects[] toDeactivateList = FindGameObjectsWithTag("blue");
+			GameObject[] toActivateList = FindGameObjectsWithTag("blue");
+			GameObject[] toDeactivateList = FindGameObjectsWithTag("red");
+			isRedActive = false;
+		}
+		else {
+			GameObject[] toActivateList = FindGameObjectsWithTag("red");
+			GameObject[] toDeactivateList = FindGameObjectsWithTag("blue");
+			isRedActive = true;
 		}
 
 		foreach(GameObject element in toActivateList) {
