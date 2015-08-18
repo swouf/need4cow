@@ -19,6 +19,7 @@ public class playerBehaviour : MonoBehaviour {
 	 * \brief Vitesse du personnage en px/s
 	 */
 	public float speed;
+	public float jumpForce;
 	public float playerHeight;
 
 	// Use this for initialization
@@ -45,7 +46,7 @@ public class playerBehaviour : MonoBehaviour {
 			Debug.Log("Switching !");
 		}
 		float velY = thisRB.velocity.y;
-		//thisRB.velocity = new Vector2(speed, velY);
+		thisRB.velocity = new Vector2(speed, velY);
 	}
 
 	/*!
@@ -54,6 +55,7 @@ public class playerBehaviour : MonoBehaviour {
 	void jump() {
 		if(isOnGround) {
 			Debug.Log("Jump !");
+			thisRB.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
 	}
 	void die() {
@@ -61,6 +63,7 @@ public class playerBehaviour : MonoBehaviour {
 
 	}
 	void OnCollisionStay2D(Collision2D collision) {
+		//Debug.Log("Ça touche !");
 		float maxContactPointY = transform.position.y - (playerHeight/2);
 		isOnGround = true;
 		foreach(ContactPoint2D contact in collision.contacts) {
@@ -69,7 +72,8 @@ public class playerBehaviour : MonoBehaviour {
 			}
 		}
 	}
-	void OnCollistionExit2D(Collision2D collision) {
+	void OnCollisionExit2D(Collision2D collision) {
+		Debug.Log("Playeur : Je ne touche plus le sol.");
 		isOnGround = false;
 	}
 }
