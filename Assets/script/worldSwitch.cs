@@ -6,25 +6,32 @@ public class worldSwitch : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Debug.Log("worldSwitch Initialization...");
+		switchWorld();
 	}
 
 	// Update is called once per frame
 	void Update () {
-
 		if(Input.GetKeyDown("s")) {
 			Debug.Log("Switching !");
-			this.switchWorld();
+			switchWorld();
 		}
 	}
+
 	void switchWorld() {
+		GameObject[] toActivateList;
+		GameObject[] toDeactivateList;
 		if(isRedActive) {
-			GameObject[] toActivateList = FindGameObjectsWithTag("blue");
-			GameObject[] toDeactivateList = FindGameObjectsWithTag("red");
+			toActivateList =
+				GameObject.FindGameObjectsWithTag("blue");
+			toDeactivateList =
+				GameObject.FindGameObjectsWithTag("red");
 			isRedActive = false;
 		}
 		else {
-			GameObject[] toActivateList = FindGameObjectsWithTag("red");
-			GameObject[] toDeactivateList = FindGameObjectsWithTag("blue");
+			toActivateList =
+				GameObject.FindGameObjectsWithTag("red");
+			toDeactivateList =
+				GameObject.FindGameObjectsWithTag("blue");
 			isRedActive = true;
 		}
 

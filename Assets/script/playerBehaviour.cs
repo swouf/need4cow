@@ -26,7 +26,6 @@ public class playerBehaviour : MonoBehaviour {
 		Debug.Log("Player initialised.");
 
 		jumpKey			= false;
-		switchWorld		= false;
 
 		thisRB = GetComponent<Rigidbody2D>();
 	}
