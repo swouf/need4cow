@@ -10,42 +10,40 @@ using System.Collections;
 
 public class playerBehaviour : MonoBehaviour {
 
-	private float		jump;
+	private float		jumpKey;
 	private float		switchWorld;
-	private double		dx;
-	private Rigidbody	thisRB;
+	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
 	 */
-	public double speed;
+	public float speed;
 
 	// Use this for initialization
 	void Start () {
-		Debug.log("Player initialised.");
+		Debug.Log("Player initialised.");
 
-		jump			= 0;
+		jumpKey			= 0;
 		switchWorld		= 0;
-		dx				= 0;
 
-		thisRB = GetComponent<Rigidbody>();
-		thisRB.velocity = new Vector2(speed, 0);
+		thisRB = GetComponent<Rigidbody2D>();
 	}
 
 	/*!
 	 * \brief Update is called once per frame
 	 */
 	void Update () {
-		jump = Input.GetAxis("Fire1");
+		jumpKey = Input.GetAxis("Fire1");
 		switchWorld = Input.GetAxis("Fire2");
 
-		if(jump > 0.0) {
+		if(jumpKey > 0.0) {
 			this.jump();
 		}
 		if(switchWorld > 0.0) {
 			Debug.Log("Switching !");
 		}
+		thisRB.velocity = new Vector2(speed, 0);
 	}
 
 	/*!
@@ -53,5 +51,9 @@ public class playerBehaviour : MonoBehaviour {
 	 */
 	void jump() {
 		Debug.Log("Jump !");
+	}
+	void die() {
+		Debug.Log("The Player is Dead !!!");
+			
 	}
 }
