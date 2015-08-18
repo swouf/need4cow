@@ -10,48 +10,66 @@ using System.Collections;
 
 public class playerBehaviour : MonoBehaviour {
 
-	private float		jump;
-	private float		switchWorld;
-	private double		dx;
-	private Rigidbody	thisRB;
+	private bool		jumpKey;
+	private bool		switchWorld;
+	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
 	 */
-	public double speed;
+	public float speed;
+	public float playerHeight;
 
 	// Use this for initialization
 	void Start () {
-		Debug.log("Player initialised.");
+		Debug.Log("Player initialised.");
 
-		jump			= 0;
-		switchWorld		= 0;
-		dx				= 0;
+		jumpKey			= false;
+		switchWorld		= false;
 
-		thisRB = GetComponent<Rigidbody>();
-		thisRB.velocity = new Vector2(speed, 0);
+		thisRB = GetComponent<Rigidbody2D>();
 	}
 
 	/*!
 	 * \brief Update is called once per frame
 	 */
 	void Update () {
-		jump = Input.GetAxis("Fire1");
-		switchWorld = Input.GetAxis("Fire2");
+		jumpKey = Input.GetKeyDown("space");
+		switchWorld = Input.GetKeyDown("s");
 
-		if(jump > 0.0) {
+		if(jumpKey) {
 			this.jump();
 		}
-		if(switchWorld > 0.0) {
+		if(switchWorld) {
 			Debug.Log("Switching !");
 		}
+		float velY = thisRB.velocity.y;
+		//thisRB.velocity = new Vector2(speed, velY);
 	}
 
 	/*!
 	 * \brief Fonction de saut (fait sauter le joueur)
 	 */
 	void jump() {
-		Debug.Log("Jump !");
+		if(isOnGround) {
+			Debug.Log("Jump !");
+		}
+	}
+	void die() {
+		Debug.Log("The Player is Dead !!!");
+
+	}
+	void OnCollisionStay2D(Collision2D collision) {
+		float maxContactPointY = transform.position.y - (playerHeight/2);
+		isOnGround = true;
+		foreach(ContactPoint2D contact in collision.contacts) {
+			if(contact.point.y >= maxContactPointY) {
+				isOnGround = false;
+			}
+		}
+	}
+	void OnCollistionExit2D(Collision2D collision) {
+		isOnGround = false;
 	}
 }
