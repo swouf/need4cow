@@ -11,7 +11,6 @@ using System.Collections;
 public class playerBehaviour : MonoBehaviour {
 
 	private bool		jumpKey;
-	private bool		switchWorld;
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
 
@@ -37,14 +36,11 @@ public class playerBehaviour : MonoBehaviour {
 	 */
 	void Update () {
 		jumpKey = Input.GetKeyDown("space");
-		switchWorld = Input.GetKeyDown("s");
 
 		if(jumpKey) {
 			this.jump();
 		}
-		if(switchWorld) {
-			Debug.Log("Switching !");
-		}
+
 		float velY = thisRB.velocity.y;
 		thisRB.velocity = new Vector2(speed, velY);
 	}
