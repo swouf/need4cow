@@ -1,7 +1,7 @@
 ﻿/*!
  * \file playerBehaviour.cs
  * \brief Script de contrôle du joueur
- * \date 18.08.2015
+ * \date 21.08.2015
  * \version 0.1
  * \author Jérémy Jayet
  */
@@ -20,6 +20,7 @@ public class playerBehaviour : MonoBehaviour {
 
 	private GameObject	mainCamera;
 	private bool		isDead;
+	private Animator	thisAnim;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
@@ -35,6 +36,13 @@ public class playerBehaviour : MonoBehaviour {
 		Debug.Log("Player initialised.");
 		jumpKey	= false;
 		isDead	= false;
+		if(timeBeforeReboot <= 0.0) {
+			timeBeforeReboot = 1.0f;
+		}
+		thisAnim = GetComponent<Animator>();
+		if(thisAnim == null) {
+			Debug.LogWarning("Impossible de récupérer l'animation du joueur");
+		}
 
 		thisRB = GetComponent<Rigidbody2D>();
 
@@ -93,6 +101,7 @@ public class playerBehaviour : MonoBehaviour {
 
 		// Unsync Camera
 		mainCamera.SendMessage("setVerticalSyncWithPlayer", false);
+		mainCamera.SendMessage("stop");
 	}
 	void OnCollisionStay2D(Collision2D collision) {
 		//Debug.Log("Ça touche !");
@@ -107,5 +116,9 @@ public class playerBehaviour : MonoBehaviour {
 	void OnCollisionExit2D(Collision2D collision) {
 		// Debug.Log("Playeur : Je ne touche plus le sol.");
 		isOnGround = false;
+	}
+	void stop() {
+		thisAnim.enabled = false;
+		speed = 0.0f;
 	}
 }
