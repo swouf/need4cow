@@ -13,6 +13,8 @@ public class goalBehaviour : MonoBehaviour {
 	private Collider2D thisCollider;
 	private GameObject	mainCamera;
 
+	//public string		winScreen; // À décommenté pour activer le winScreen
+
 	// Use this for initialization
 	void Start () {
 		thisCollider = GetComponent<BoxCollider2D>();
@@ -31,6 +33,7 @@ public class goalBehaviour : MonoBehaviour {
 		if(Collision.gameObject.tag == "Player") {
 			Collision.gameObject.SendMessage("stop");
 			mainCamera.SendMessage("stop");
+			//Application.LoadLevel(winScreen); // À décommenté pour activer le winScreen
 		}
 	}
 }

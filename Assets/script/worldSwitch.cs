@@ -31,11 +31,11 @@ public class worldSwitch : MonoBehaviour {
 			isRedActive = true;
 		}
 		foreach(GameObject element in blueList) {
-			Debug.Log(element.ToString());
+			//Debug.Log(element.ToString());
 			element.SetActive(!isRedActive);
 		}
 		foreach(GameObject element in redList) {
-			Debug.Log(element.ToString());
+			//Debug.Log(element.ToString());
 			element.SetActive(isRedActive);
 		}
 	}

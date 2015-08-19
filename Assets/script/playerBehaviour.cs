@@ -13,14 +13,18 @@ public class playerBehaviour : MonoBehaviour {
 	private bool		jumpKey;
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
-
-	//sons
-	private AudioSource source;
-
-
-	private GameObject	mainCamera;
 	private bool		isDead;
+	// sons
+	private AudioSource source;
+	// camera
+	private GameObject	mainCamera;
+	private Camera		mainCamComp;
+	// animation
 	private Animator	thisAnim;
+	// Player dans la caméra gestion
+	float minPosX = 0;
+	float camPosX = 0;
+	float offsetPlayerX = 0;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
@@ -49,6 +53,16 @@ public class playerBehaviour : MonoBehaviour {
 		source = this.GetComponent<AudioSource>();
 
 		mainCamera = GameObject.FindWithTag("MainCamera");
+		if(mainCamera == null) {
+			Debug.LogWarning("Player : Impossible de récupérer la caméra principale.");
+		}
+		else {
+			mainCamComp = mainCamera.GetComponent<Camera>();
+			if(mainCamComp == null) {
+				Debug.LogWarning("Player : Impossible de récupérer la composante caméra de la cam principale");
+			}
+		}
+
 
 	}
 
@@ -72,6 +86,15 @@ public class playerBehaviour : MonoBehaviour {
 		if(timeBeforeReboot <= 0.0){
 			Application.LoadLevel(Application.loadedLevel);
 		}
+
+		// Checking de la position
+		camPosX = mainCamera.transform.position.x;
+		offsetPlayerX = mainCamComp.orthographicSize * mainCamComp.aspect;
+		minPosX = camPosX - offsetPlayerX;
+
+		if(transform.position.x <= minPosX) {
+			this.die();
+		}
 	}
 
 	/*!
@@ -81,8 +104,6 @@ public class playerBehaviour : MonoBehaviour {
 		if(isOnGround) {
 			Debug.Log("Jump !");
 			thisRB.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-
-
 		}
 	}
 	void die() {
@@ -103,6 +124,7 @@ public class playerBehaviour : MonoBehaviour {
 		// Unsync Camera
 		mainCamera.SendMessage("setVerticalSyncWithPlayer", false);
 		mainCamera.SendMessage("stop");
+		this.stop();
 	}
 	void OnCollisionStay2D(Collision2D collision) {
 		//Debug.Log("Ça touche !");
