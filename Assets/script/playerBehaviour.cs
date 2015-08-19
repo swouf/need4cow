@@ -13,7 +13,7 @@ public class playerBehaviour : MonoBehaviour {
 	private bool		jumpKey;
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
-
+	private GameObject	mainCamera;
 	/*!
 	 * \brief Vitesse du personnage en px/s
 	 */
@@ -28,6 +28,7 @@ public class playerBehaviour : MonoBehaviour {
 		jumpKey	= false;
 
 		thisRB = GetComponent<Rigidbody2D>();
+		mainCamera = GameObject.FindWithTag("MainCamera");
 	}
 
 	/*!
@@ -63,6 +64,9 @@ public class playerBehaviour : MonoBehaviour {
 
 		thisCollider.enabled = false;
 		thisRB.AddTorque(dyingTorqueIntensity, ForceMode2D.Impulse);
+
+		// Unsync Camera
+		mainCamera.SendMessage("setVerticalSyncWithPlayer", false);
 	}
 	void OnCollisionStay2D(Collision2D collision) {
 		//Debug.Log("Ça touche !");

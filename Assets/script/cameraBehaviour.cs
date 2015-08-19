@@ -9,6 +9,7 @@ public class cameraBehaviour : MonoBehaviour {
 	public float speed;
 	public float horizontalOffsetToPlayer;
 	public float verticalOffsetToPlayer;
+	public bool verticalSyncWithPlayer;
 	// Use this for initialization
 
 	void Start () {
@@ -17,7 +18,7 @@ public class cameraBehaviour : MonoBehaviour {
 		if(Player == null) {
 			Debug.Log("cameraBehaviour : Impossible de récupérer le Player.");
 		}
-		
+
 		transform.position =
 			new Vector3(Player.transform.position.x + horizontalOffsetToPlayer,
 						Player.transform.position.y + verticalOffsetToPlayer,
@@ -28,9 +29,20 @@ public class cameraBehaviour : MonoBehaviour {
 	void Update () {
 		float dt		= Time.deltaTime;
 		float dx		= dt*speed;
+		float camY		= 0;
 
 		float camX = transform.position.x + dx;
-		float camY = Player.transform.position.y + verticalOffsetToPlayer;
+
+		if(verticalSyncWithPlayer) {
+			camY = Player.transform.position.y + verticalOffsetToPlayer;
+		}
+		else {
+			camY = transform.position.y;
+		}
 		transform.position = new Vector3(camX, camY, camZ);
+	}
+
+	void setVerticalSyncWithPlayer(bool isSync) {
+		verticalSyncWithPlayer = isSync;
 	}
 }
