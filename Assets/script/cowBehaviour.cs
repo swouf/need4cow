@@ -21,6 +21,6 @@ public class cowBehaviour : MonoBehaviour {
 	void Update () {
 
 		float velY = thisRB.velocity.y;
-		thisRB.velocity = new Vector2(speed, velY);
+		thisRB.velocity = new Vector2(speed, 0);
 	}
 }
