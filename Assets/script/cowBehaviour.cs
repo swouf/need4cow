@@ -19,7 +19,8 @@ public class cowBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-		thisRB.velocity = new Vector2(speed, 0);
+
+		float velY = thisRB.velocity.y;
+		thisRB.velocity = new Vector2(speed, velY);
 	}
 }

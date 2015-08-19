@@ -22,7 +22,8 @@ public class cameraBehaviour : MonoBehaviour {
 										camZ);
 
 		float camX = transform.position.x;
-		transform.position = new Vector3(camX + offsetToPlayer, camZ);
+		float camY = transform.position.y;
+		transform.position = new Vector3(camX + offsetToPlayer, camY, camZ);
 	}
 
 	// Update is called once per frame

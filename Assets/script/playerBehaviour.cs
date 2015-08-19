@@ -11,7 +11,6 @@ using System.Collections;
 public class playerBehaviour : MonoBehaviour {
 
 	private bool		jumpKey;
-	private bool		switchWorld;
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
 
@@ -21,13 +20,12 @@ public class playerBehaviour : MonoBehaviour {
 	public float speed;
 	public float jumpForce;
 	public float playerHeight;
+	public float dyingTorqueIntensity;
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log("Player initialised.");
-
-		jumpKey			= false;
-		switchWorld		= false;
+		jumpKey	= false;
 
 		thisRB = GetComponent<Rigidbody2D>();
 	}
@@ -37,14 +35,11 @@ public class playerBehaviour : MonoBehaviour {
 	 */
 	void Update () {
 		jumpKey = Input.GetKeyDown("space");
-		switchWorld = Input.GetKeyDown("s");
 
 		if(jumpKey) {
 			this.jump();
 		}
-		if(switchWorld) {
-			Debug.Log("Switching !");
-		}
+
 		float velY = thisRB.velocity.y;
 		thisRB.velocity = new Vector2(speed, velY);
 	}
@@ -59,8 +54,15 @@ public class playerBehaviour : MonoBehaviour {
 		}
 	}
 	void die() {
-		Debug.Log("The Player is Dead !!!");
+		BoxCollider2D thisCollider = GetComponent<BoxCollider2D>();
 
+		Debug.Log("The Player is Dead !!!");
+		isOnGround = true;
+		jump();
+		isOnGround = false;
+
+		thisCollider.enabled = false;
+		thisRB.AddTorque(dyingTorqueIntensity, ForceMode2D.Impulse);
 	}
 	void OnCollisionStay2D(Collision2D collision) {
 		//Debug.Log("Ça touche !");
@@ -73,7 +75,7 @@ public class playerBehaviour : MonoBehaviour {
 		}
 	}
 	void OnCollisionExit2D(Collision2D collision) {
-		Debug.Log("Playeur : Je ne touche plus le sol.");
+		// Debug.Log("Playeur : Je ne touche plus le sol.");
 		isOnGround = false;
 	}
 }
