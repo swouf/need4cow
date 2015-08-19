@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+/*!
+ * \file mainMenuBehaviour.cs
+ * \brief Script de gestion du menu principal
+ * \date 21.08.2015
+ * \version 0.1
+ * \author Jérémy Jayet
+ */﻿
+
+using UnityEngine;
 using System.Collections;
 
 public class mainMenuBehaviour : MonoBehaviour {

@@ -1,6 +1,6 @@
 /*!
- * \file spikesBehaviour.cs
- * \brief Script de contrôle des piques et autres ennemies immobiles
+ * \file goalBehaviour.cs
+ * \brief Script de contrôle du but des niveaux
  * \date 21.08.2015
  * \version 0.1
  * \author Jérémy Jayet
@@ -9,9 +9,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class spikesBehaviour : MonoBehaviour {
-
+public class goalBehaviour : MonoBehaviour {
 	private Collider2D thisCollider;
+	private GameObject	mainCamera;
+
 	// Use this for initialization
 	void Start () {
 		thisCollider = GetComponent<BoxCollider2D>();
@@ -19,6 +20,7 @@ public class spikesBehaviour : MonoBehaviour {
 		{
 			Debug.LogWarning(this.ToString() + " : Impossible de récupérer le collider.");
 		}
+		mainCamera = GameObject.FindWithTag("MainCamera");
 	}
 
 	// Update is called once per frame
@@ -27,7 +29,8 @@ public class spikesBehaviour : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D Collision) {
 		if(Collision.gameObject.tag == "Player") {
-			Collision.gameObject.SendMessage("die");
+			Collision.gameObject.SendMessage("stop");
+			mainCamera.SendMessage("stop");
 		}
 	}
 }
