@@ -13,13 +13,13 @@ public class playerBehaviour : MonoBehaviour {
 	private bool		jumpKey;
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
-<<<<<<< HEAD
+ 
 	//sons
 	private AudioSource source;
 
-=======
+
 	private GameObject	mainCamera;
->>>>>>> origin/master
+
 	/*!
 	 * \brief Vitesse du personnage en px/s
 	 */
@@ -34,11 +34,11 @@ public class playerBehaviour : MonoBehaviour {
 		jumpKey	= false;
 
 		thisRB = GetComponent<Rigidbody2D>();
-<<<<<<< HEAD
+
 		source = this.GetComponent<AudioSource>();
-=======
+
 		mainCamera = GameObject.FindWithTag("MainCamera");
->>>>>>> origin/master
+
 	}
 
 	/*!
