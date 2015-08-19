@@ -11,7 +11,10 @@ public class cameraBehaviour : MonoBehaviour {
 	public float verticalOffsetToPlayer;
 	// Use this for initialization
 
+
 	void Start () {
+
+
 		camZ = transform.position.z;
 		Player = GameObject.FindWithTag("Player");
 		if(Player == null) {
@@ -26,6 +29,9 @@ public class cameraBehaviour : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+
+
 		float dt		= Time.deltaTime;
 		float dx		= dt*speed;
 

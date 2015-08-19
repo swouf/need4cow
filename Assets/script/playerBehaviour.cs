@@ -13,6 +13,8 @@ public class playerBehaviour : MonoBehaviour {
 	private bool		jumpKey;
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
+	//sons
+	private AudioSource source;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
@@ -28,6 +30,7 @@ public class playerBehaviour : MonoBehaviour {
 		jumpKey	= false;
 
 		thisRB = GetComponent<Rigidbody2D>();
+		source = this.GetComponent<AudioSource>();
 	}
 
 	/*!
@@ -51,6 +54,8 @@ public class playerBehaviour : MonoBehaviour {
 		if(isOnGround) {
 			Debug.Log("Jump !");
 			thisRB.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+
 		}
 	}
 	void die() {
@@ -60,6 +65,8 @@ public class playerBehaviour : MonoBehaviour {
 		isOnGround = true;
 		jump();
 		isOnGround = false;
+
+		source.PlayOneShot(source.clip);
 
 		thisCollider.enabled = false;
 		thisRB.AddTorque(dyingTorqueIntensity, ForceMode2D.Impulse);

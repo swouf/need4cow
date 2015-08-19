@@ -3,6 +3,7 @@ using System.Collections;
 
 public class cowBehaviour : MonoBehaviour {
 
+	private AudioSource source;
 	private Rigidbody2D	thisRB;
 
 	/*!
@@ -14,6 +15,8 @@ public class cowBehaviour : MonoBehaviour {
 	void Start () {
 		Debug.Log("Cow initialised.");
 
+		source = this.GetComponent<AudioSource>();
+		source.PlayOneShot(source.clip);
 		thisRB = GetComponent<Rigidbody2D>();
 	}
 
