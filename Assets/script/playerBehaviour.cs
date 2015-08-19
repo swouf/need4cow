@@ -102,6 +102,7 @@ public class playerBehaviour : MonoBehaviour {
 		// Unsync Camera
 		mainCamera.SendMessage("setVerticalSyncWithPlayer", false);
 		mainCamera.SendMessage("stop");
+		this.stop();
 	}
 	void OnCollisionStay2D(Collision2D collision) {
 		//Debug.Log("Ça touche !");

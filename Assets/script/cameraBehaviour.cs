@@ -73,5 +73,6 @@ public class cameraBehaviour : MonoBehaviour {
 	}
 	void stop() {
 		speed = 0.0f;
+		tmpSpeed = 0.0f;
 	}
 }
