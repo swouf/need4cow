@@ -2,10 +2,16 @@
 using System.Collections;
 
 public class worldSwitch : MonoBehaviour {
+
+	private GameObject[] redList;
+	private GameObject[] blueList;
 	public bool isRedActive;
 	// Use this for initialization
 	void Start () {
 		Debug.Log("worldSwitch Initialization...");
+
+		blueList	= GameObject.FindGameObjectsWithTag("blue");
+		redList		= GameObject.FindGameObjectsWithTag("red");
 		switchWorld();
 	}
 
@@ -18,28 +24,19 @@ public class worldSwitch : MonoBehaviour {
 	}
 
 	void switchWorld() {
-		GameObject[] toActivateList;
-		GameObject[] toDeactivateList;
 		if(isRedActive) {
-			toActivateList =
-				GameObject.FindGameObjectsWithTag("blue");
-			toDeactivateList =
-				GameObject.FindGameObjectsWithTag("red");
 			isRedActive = false;
 		}
 		else {
-			toActivateList =
-				GameObject.FindGameObjectsWithTag("red");
-			toDeactivateList =
-				GameObject.FindGameObjectsWithTag("blue");
 			isRedActive = true;
 		}
-
-		foreach(GameObject element in toActivateList) {
-			element.SetActive(true);
+		foreach(GameObject element in blueList) {
+			Debug.Log(element.ToString());
+			element.SetActive(!isRedActive);
 		}
-		foreach(GameObject element in toDeactivateList) {
-			element.SetActive(false);
+		foreach(GameObject element in redList) {
+			Debug.Log(element.ToString());
+			element.SetActive(isRedActive);
 		}
 	}
 }
