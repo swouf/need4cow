@@ -14,6 +14,8 @@ public class playerBehaviour : MonoBehaviour {
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
 	private GameObject	mainCamera;
+	private bool		isDead;
+
 	/*!
 	 * \brief Vitesse du personnage en px/s
 	 */
@@ -21,11 +23,13 @@ public class playerBehaviour : MonoBehaviour {
 	public float jumpForce;
 	public float playerHeight;
 	public float dyingTorqueIntensity;
+	public float timeBeforeReboot;
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log("Player initialised.");
 		jumpKey	= false;
+		isDead	= false;
 
 		thisRB = GetComponent<Rigidbody2D>();
 		mainCamera = GameObject.FindWithTag("MainCamera");
@@ -43,6 +47,13 @@ public class playerBehaviour : MonoBehaviour {
 
 		float velY = thisRB.velocity.y;
 		thisRB.velocity = new Vector2(speed, velY);
+
+		if(isDead) {
+			timeBeforeReboot -= Time.deltaTime;
+		}
+		if(timeBeforeReboot <= 0.0){
+			Application.LoadLevel(Application.loadedLevel);
+		}
 	}
 
 	/*!
@@ -56,6 +67,7 @@ public class playerBehaviour : MonoBehaviour {
 	}
 	void die() {
 		BoxCollider2D thisCollider = GetComponent<BoxCollider2D>();
+		isDead = true;
 
 		Debug.Log("The Player is Dead !!!");
 		isOnGround = true;
@@ -63,6 +75,7 @@ public class playerBehaviour : MonoBehaviour {
 		isOnGround = false;
 
 		thisCollider.enabled = false;
+		thisRB.freezeRotation = false;
 		thisRB.AddTorque(dyingTorqueIntensity, ForceMode2D.Impulse);
 
 		// Unsync Camera

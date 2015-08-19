@@ -23,4 +23,8 @@ public class mainMenuBehaviour : MonoBehaviour {
 		Debug.Log("Loading scene : " + level1SceneName);
 		Application.LoadLevel(level1SceneName);
 	}
+	void quit() {
+		Debug.Log("Quitting...");
+		Application.Quit();
+	}
 }
