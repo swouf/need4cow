@@ -62,8 +62,6 @@ public class playerBehaviour : MonoBehaviour {
 				Debug.LogWarning("Player : Impossible de récupérer la composante caméra de la cam principale");
 			}
 		}
-
-
 	}
 
 	/*!

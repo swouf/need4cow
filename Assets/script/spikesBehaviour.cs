@@ -14,7 +14,7 @@ public class spikesBehaviour : MonoBehaviour {
 	private Collider2D thisCollider;
 	// Use this for initialization
 	void Start () {
-		thisCollider = GetComponent<BoxCollider2D>();
+		thisCollider = GetComponent<Collider2D>();
 		if(thisCollider == null)
 		{
 			Debug.LogWarning(this.ToString() + " : Impossible de récupérer le collider.");
