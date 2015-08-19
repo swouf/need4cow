@@ -26,12 +26,16 @@ public class cowBehaviour : MonoBehaviour {
 		source = this.GetComponent<AudioSource>();
 		source.PlayOneShot(source.clip);
 		thisRB = GetComponent<Rigidbody2D>();
+		thisRB.gravityScale = 0.0f;
 	}
 
 	// Update is called once per frame
 	void Update () {
 
 		float velY = thisRB.velocity.y;
-		thisRB.velocity = new Vector2(speed, 0);
+		/** Si la vache tombe, supprimez la ligne 1, et décommentez
+		 *  la ligne 2. **/
+		thisRB.velocity = new Vector2(speed, velY); // LIGNE 1
+		// thisRB.velocity = new Vector2(speed, 0); // LIGNE 2
 	}
 }
