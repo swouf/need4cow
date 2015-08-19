@@ -65,6 +65,7 @@ public class playerBehaviour : MonoBehaviour {
 		float velY = thisRB.velocity.y;
 		thisRB.velocity = new Vector2(speed, velY);
 
+
 		if(isDead) {
 			timeBeforeReboot -= Time.deltaTime;
 		}
