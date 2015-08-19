@@ -7,7 +7,8 @@ public class cameraBehaviour : MonoBehaviour {
 	private float camZ;
 
 	public float speed;
-	public float offsetToPlayer;
+	public float horizontalOffsetToPlayer;
+	public float verticalOffsetToPlayer;
 	// Use this for initialization
 
 	void Start () {
@@ -17,12 +18,10 @@ public class cameraBehaviour : MonoBehaviour {
 			Debug.Log("cameraBehaviour : Impossible de récupérer le Player.");
 		}
 
-		transform.position = new Vector3(Player.transform.position.x,
-										 Player.transform.position.y,
-										camZ);
-
-		float camX = transform.position.x;
-		transform.position = new Vector3(camX + offsetToPlayer, camZ);
+		transform.position =
+			new Vector3(Player.transform.position.x + horizontalOffsetToPlayer,
+						Player.transform.position.y + verticalOffsetToPlayer,
+						camZ);
 	}
 
 	// Update is called once per frame
@@ -30,8 +29,8 @@ public class cameraBehaviour : MonoBehaviour {
 		float dt		= Time.deltaTime;
 		float dx		= dt*speed;
 
-		float camX = transform.position.x;
-		float camY = transform.position.y;
-		transform.position = new Vector3(camX + dx, camY, camZ);
+		float camX = transform.position.x + dx;
+		float camY = Player.transform.position.y + verticalOffsetToPlayer;
+		transform.position = new Vector3(camX, camY, camZ);
 	}
 }
