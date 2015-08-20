@@ -17,7 +17,7 @@ public class levelBehaviour : MonoBehaviour {
 	public string menuSceneName;
 
 	void Start() {
-		GameObject.FindWithTag("Player").SendMessage("setLevelObj", this.gameObject);
+		//GameObject.FindWithTag("Player").SendMessage("setLevelObj", this.gameObject);
 		thisAnimator = this.GetComponent<Animator>();
 	}
 

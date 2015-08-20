@@ -10,9 +10,9 @@ using UnityEngine;
 using System.Collections;
 
 public class goalBehaviour : MonoBehaviour {
-	private Collider2D thisCollider;
-	private GameObject	mainCamera;
-	private GameObject	levelObj;
+	private Collider2D thisCollider = null;
+	private GameObject	mainCamera = null;
+	private GameObject	levelObj = null;
 
 	//public string		winScreen; // À décommenté pour activer le winScreen
 
@@ -23,7 +23,13 @@ public class goalBehaviour : MonoBehaviour {
 			Debug.LogWarning(this.ToString() + " : Impossible de récupérer le collider.");
 		}
 		mainCamera = GameObject.FindWithTag("MainCamera");
-		levelObj = GameObject.Find("Level");
+		if(mainCamera == null) {
+			Debug.LogWarning(this.ToString() + " : Impossible de récupérer la mainCamera.");
+		}
+		levelObj = GameObject.Find("FaderLayer");
+		if(levelObj == null) {
+			Debug.LogWarning("Impossible de récupérer l'objet FaderLayer !");
+		}
 	}
 
 	// Update is called once per frame

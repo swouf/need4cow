@@ -1105,11 +1105,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 424210, guid: a09d1a8ed35642445beab2e47f04f496, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 258.676178
+      value: 312
       objectReference: {fileID: 0}
     - target: {fileID: 424210, guid: a09d1a8ed35642445beab2e47f04f496, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -120.990059
+      value: -73
       objectReference: {fileID: 0}
     - target: {fileID: 424210, guid: a09d1a8ed35642445beab2e47f04f496, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1801,6 +1801,7 @@ GameObject:
   - 92: {fileID: 1586252549}
   - 124: {fileID: 1586252548}
   - 81: {fileID: 1586252547}
+  - 114: {fileID: 1586252552}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1874,6 +1875,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1586252552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586252546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6eb9400ba71174e8322030557e895e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 75
+  horizontalOffsetToPlayer: 50
+  verticalOffsetToPlayer: 0
+  verticalSyncWithPlayer: 1
+  delayStart: 1
 --- !u!1 &1622447044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,11 +1974,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 454604, guid: c6f61f3addf17c14284803926ddc2266, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -116
       objectReference: {fileID: 0}
     - target: {fileID: 454604, guid: c6f61f3addf17c14284803926ddc2266, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -17
+      value: -38
       objectReference: {fileID: 0}
     - target: {fileID: 454604, guid: c6f61f3addf17c14284803926ddc2266, type: 2}
       propertyPath: m_LocalPosition.z

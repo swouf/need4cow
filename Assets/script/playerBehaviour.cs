@@ -34,7 +34,7 @@ public class playerBehaviour : MonoBehaviour {
 	private int coinsCounter;
 
 	// level object
-	private GameObject levelObj;
+	private GameObject levelObj = null;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
@@ -72,6 +72,10 @@ public class playerBehaviour : MonoBehaviour {
 			if(mainCamComp == null) {
 				Debug.LogWarning("Player : Impossible de récupérer la composante caméra de la cam principale");
 			}
+		}
+		levelObj = GameObject.Find("FaderLayer");
+		if(levelObj == null) {
+			Debug.LogWarning("Impossible de récupérer l'objet FaderLayer !");
 		}
 	}
 
@@ -158,7 +162,7 @@ public class playerBehaviour : MonoBehaviour {
 		coinsCounter += coinsToAdd;
 		Debug.Log("Total des pièces ramassées : " + coinsCounter);
 	}
-	void setLevelObj(GameObject obj) {
+	/*void setLevelObj(GameObject obj) {
 		levelObj = obj;
-	}
+	}*/
 }
