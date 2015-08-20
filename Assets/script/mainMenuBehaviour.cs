@@ -4,7 +4,7 @@
  * \date 21.08.2015
  * \version 0.1
  * \author Jérémy Jayet
- */﻿
+ */
 
 using UnityEngine;
 using System.Collections;
@@ -13,6 +13,8 @@ public class mainMenuBehaviour : MonoBehaviour {
 
 	public string tutorialSceneName;
 	public string level1SceneName;
+	public string level2SceneName;
+	public string level3SceneName;
 
 
 	// Use this for initialization
@@ -30,6 +32,14 @@ public class mainMenuBehaviour : MonoBehaviour {
 	void loadSceneLevel1() {
 		Debug.Log("Loading scene : " + level1SceneName);
 		Application.LoadLevel(level1SceneName);
+	}
+	void loadSceneLevel2() {
+		Debug.Log("Loading scene : " + level2SceneName);
+		Application.LoadLevel(level2SceneName);
+	}
+	void loadSceneLevel3() {
+		Debug.Log("Loading scene : " + level3SceneName);
+		Application.LoadLevel(level3SceneName);
 	}
 	void quit() {
 		Debug.Log("Quitting...");
