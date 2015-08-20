@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialSceneName: level1
-  level1SceneName: sceneJulien
+  level1SceneName: level2
   level2SceneName: sceneJulien
   level3SceneName: sceneJulien
 --- !u!1 &661483486
