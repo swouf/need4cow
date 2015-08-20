@@ -10,11 +10,16 @@ public class coinBehaviour : MonoBehaviour {
 	private float		timeElapsed;
 	private float		normalizedTime;
 
+	private AudioSource source;
+
 	public float		animTime;
 	public float		animHeight;
 
 	// Use this for initialization
 	void Start () {
+
+		source = this.GetComponent<AudioSource>();
+
 		hasBeenTouched = false;
 		thisCollider = GetComponent<Collider2D>();
 		if(thisCollider.isTrigger == false) {
@@ -41,6 +46,9 @@ public class coinBehaviour : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "Player") {
 			Debug.Log("Le player à touché la pièce : " + ToString());
+
+			source.PlayOneShot(source.clip);
+
 			if(hasBeenTouched == false) {
 				collider.gameObject.SendMessage("addCoins", 1);
 			}

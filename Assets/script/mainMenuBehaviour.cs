@@ -4,7 +4,7 @@
  * \date 21.08.2015
  * \version 0.1
  * \author Jérémy Jayet
- */﻿
+ */
 
 using UnityEngine;
 using System.Collections;
