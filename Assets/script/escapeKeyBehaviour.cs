@@ -11,25 +11,32 @@ using System.Collections;
 
 public class escapeKeyBehaviour : MonoBehaviour {
 
-	public string menuSceneName;
 	private bool quitKey;
+	private GameObject	levelObj = null;
 
 	// Use this for initialization
 	void Start () {
 		quitKey = false;
+
+		levelObj = GameObject.Find("FaderLayer");
+		if(levelObj == null) {
+			Debug.LogWarning("Impossible de récupérer l'objet FaderLayer !");
+		}
 	}
 	// Update is called once per frame
 	void Update () {
-
 		quitKey = Input.GetKeyDown("escape");
 
 		if(quitKey){
-			this.loadSceneMenu();
+			levelObj.SendMessage("goToMainMenu");
 		}
-	}
-	void loadSceneMenu() {
-		Debug.Log("Loading scene : " + menuSceneName);
-		Application.LoadLevel(menuSceneName);
+		/*** ! CODE NON FONCTIONNEL !								***
+		 *** Censé permettre de quitter en pressant escape depuis	***
+		 *** le menu principal										***
+		else if(Application.loadedLevel == levelObj.menuSceneName) {
+			Application.Quit();
+		}
+		***/
 	}
 	void quit() {
 		Debug.Log("Quitting...");

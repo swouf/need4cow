@@ -14,19 +14,27 @@ public class playerBehaviour : MonoBehaviour {
 	private Rigidbody2D	thisRB;
 	private bool		isOnGround;
 	private bool		isDead;
+
 	// sons
 	private AudioSource source;
+
 	// camera
 	private GameObject	mainCamera;
 	private Camera		mainCamComp;
+
 	// animation
 	private Animator	thisAnim;
+
 	// Player dans la caméra gestion
 	private float minPosX = 0;
 	private float camPosX = 0;
 	private float offsetPlayerX = 0;
+
 	// coins counter
 	private int coinsCounter;
+
+	// level object
+	private GameObject levelObj = null;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
@@ -65,6 +73,10 @@ public class playerBehaviour : MonoBehaviour {
 				Debug.LogWarning("Player : Impossible de récupérer la composante caméra de la cam principale");
 			}
 		}
+		levelObj = GameObject.Find("FaderLayer");
+		if(levelObj == null) {
+			Debug.LogWarning("Impossible de récupérer l'objet FaderLayer !");
+		}
 	}
 
 	/*!
@@ -83,9 +95,9 @@ public class playerBehaviour : MonoBehaviour {
 
 		if(isDead) {
 			timeBeforeReboot -= Time.deltaTime;
-		}
-		if(timeBeforeReboot <= 0.0){
-			Application.LoadLevel(Application.loadedLevel);
+			if(timeBeforeReboot <= 0.0){
+				levelObj.SendMessage("reloadLevel");
+			}
 		}
 
 		// Checking de la position
@@ -150,4 +162,7 @@ public class playerBehaviour : MonoBehaviour {
 		coinsCounter += coinsToAdd;
 		Debug.Log("Total des pièces ramassées : " + coinsCounter);
 	}
+	/*void setLevelObj(GameObject obj) {
+		levelObj = obj;
+	}*/
 }
