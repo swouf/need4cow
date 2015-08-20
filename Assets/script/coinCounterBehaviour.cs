@@ -20,5 +20,9 @@ public class coinCounterBehaviour : MonoBehaviour {
 	void setValue(int val) {
 		coins = val;
 		thisTxt.text = coins + " x";
+		if(coins > PlayerPrefs.GetInt("coinsHighScore" + Application.loadedLevel)) {
+			PlayerPrefs.SetInt("coinsHighScore" + Application.loadedLevel, coins);
+			PlayerPrefs.Save();
+		}
 	}
 }

@@ -34,6 +34,9 @@ public class playerBehaviour : MonoBehaviour {
 	private int coinsCounter;
 	private GameObject coinCounterObj;
 
+	// deaths counter
+	private GameObject deathCounterObj;
+
 	// level object
 	private GameObject levelObj = null;
 
@@ -83,11 +86,10 @@ public class playerBehaviour : MonoBehaviour {
 		if(coinCounterObj == null) {
 			Debug.LogWarning("Impossible de récupérer l'objet coinCounter !");
 		}
-		// À enlever <<<<<<<<<<<<<<
-		else {
-			Debug.Log("Nom de l'objet récupéré : " + coinCounterObj.ToString());
+		deathCounterObj = GameObject.Find("deathCounter");
+		if(deathCounterObj == null) {
+			Debug.LogWarning("Impossible de récupérer l'objet deathCounter !");
 		}
-		// >>>>>>>>>>>>>>>>>>>>>>>>
 	}
 
 	/*!
@@ -149,6 +151,7 @@ public class playerBehaviour : MonoBehaviour {
 		mainCamera.SendMessage("setVerticalSyncWithPlayer", false);
 		mainCamera.SendMessage("stop");
 		this.stop();
+		deathCounterObj.SendMessage("addDeath");
 	}
 	void OnCollisionStay2D(Collision2D collision) {
 		//Debug.Log("Ça touche !");
