@@ -163,9 +163,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 548075192}
-        m_MethodName: StopAllCoroutines
-        m_Mode: 1
+      - m_Target: {fileID: 548075187}
+        m_MethodName: SendMessage
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -799,7 +799,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 661483486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -200, y: 280, z: 0}
+  m_LocalPosition: {x: -194, y: 219, z: 0}
   m_LocalScale: {x: 1.87993431, y: 1.91776109, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1199,11 +1199,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22431498, guid: 4535c13748a90bb4cbded554e94d0e51, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -83
+      value: -77
       objectReference: {fileID: 0}
     - target: {fileID: 22431498, guid: 4535c13748a90bb4cbded554e94d0e51, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 296
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 22431498, guid: 4535c13748a90bb4cbded554e94d0e51, type: 2}
       propertyPath: m_SizeDelta.x
