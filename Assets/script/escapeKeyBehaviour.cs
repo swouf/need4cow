@@ -22,13 +22,11 @@ public class escapeKeyBehaviour : MonoBehaviour {
 		quitKey = Input.GetKeyDown("escape");
 
 		if(quitKey){
-			this.loadSceneMenu();
+			// code pour revenir au menu principal
 		}
-		else if()
-	}
-	void loadSceneMenu() {
-		Debug.Log("Loading scene : " + menuSceneName);
-		Application.LoadLevel(menuSceneName);
+		/*else if() {
+			// code pour quitter le jeu si au menu principal
+		}*/
 	}
 	void quit() {
 		Debug.Log("Quitting...");

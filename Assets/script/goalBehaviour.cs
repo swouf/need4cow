@@ -12,6 +12,7 @@ using System.Collections;
 public class goalBehaviour : MonoBehaviour {
 	private Collider2D thisCollider;
 	private GameObject	mainCamera;
+	private GameObject	levelObj;
 
 	//public string		winScreen; // À décommenté pour activer le winScreen
 
@@ -22,6 +23,7 @@ public class goalBehaviour : MonoBehaviour {
 			Debug.LogWarning(this.ToString() + " : Impossible de récupérer le collider.");
 		}
 		mainCamera = GameObject.FindWithTag("MainCamera");
+		levelObj = GameObject.Find("Level");
 	}
 
 	// Update is called once per frame
@@ -32,7 +34,8 @@ public class goalBehaviour : MonoBehaviour {
 		if(Collision.gameObject.tag == "Player") {
 			Collision.gameObject.SendMessage("stop");
 			mainCamera.SendMessage("stop");
-			//Application.LoadLevel(winScreen); // À décommenté pour activer le winScreen
+			levelObj.SendMessage("goToMainMenu");
+			//Application.LoadLevel(winScreen); // À décommenter pour activer le winScreen
 		}
 	}
 }

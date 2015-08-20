@@ -1,18 +1,38 @@
-﻿using UnityEngine;
+/*!
+ * \file levelBehaviour.cs
+ * \brief Script de contrôle du level
+ * \date 21.08.2015
+ * \version 0.1
+ * \author Jérémy Jayet
+ */﻿
+
+using UnityEngine;
 using System.Collections;
 
-public class levelOutBehaviour : MonoBehaviour {
+public class levelBehaviour : MonoBehaviour {
 
+	private Animator thisAnimator;
+
+	public float fadeOutAnimTime;
+	public string menuSceneName;
+
+	void Start() {
+		GameObject.FindWithTag("Player").SendMessage("setLevelObj", this.gameObject);
+		thisAnimator = this.GetComponent<Animator>();
+	}
+
+	void Update() {
+
+	}
+	/*
 	public Texture2D fadeOutTexture;	// the texture that will overlay the screen. This can be a black image or a loading graphic
 	public float fadeSpeed = 0.8f;		// the fading speed
-	public string menuSceneName;
 
 	private int drawDepth = -1000;		// the texture's order in the draw hierarchy: a low number means it renders on top
 	private float alpha = 1.0f;			// the texture's alpha value between 0 and 1
 	private int fadeDir = -1;			// the direction to fade: in = -1 or out = 1
 
-	void OnGUI()
-	{
+	void OnGUI() {
 		// fade out/in the alpha value using a direction, a speed and Time.deltaTime to convert the operation to seconds
 		alpha += fadeDir * fadeSpeed * Time.deltaTime;
 		// force (clamp) the number to be between 0 and 1 because GUI.color uses Alpha values between 0 and 1
@@ -25,23 +45,28 @@ public class levelOutBehaviour : MonoBehaviour {
 	}
 
 	// sets fadeDir to the direction parameter making the scene fade in if -1 and out if 1
-	public float BeginFade (int direction)
-	{
+	public float BeginFade (int direction) {
 		fadeDir = direction;
 		return (fadeSpeed);
 	}
 
 	// OnLevelWasLoaded is called when a level is loaded. It takes loaded level index (int) as a parameter so you can limit the fade in to certain scenes.
-	void OnLevelWasLoaded()
-	{
+	void OnLevelWasLoaded() {
 		// alpha = 1;		// use this if the alpha is not set to 1 by default
 		BeginFade(-1);		// call the fade in function
-	}
+	}*/
 
-	void goToMainMenu() {
+	IEnumerator goToMainMenu() {
 		Debug.Log("Loading scene : " + menuSceneName);
-		BeginFade(1);
+		thisAnimator.SetTrigger("fadeOut");
+		yield return new WaitForSeconds(fadeOutAnimTime);
 		Application.LoadLevel(menuSceneName);
 	}
-	void reloadLevel
+
+	IEnumerator reloadLevel() {
+		Debug.Log("Loading scene : " + Application.loadedLevel);
+		thisAnimator.SetTrigger("fadeOut");
+		yield return new WaitForSeconds(fadeOutAnimTime);
+		Application.LoadLevel(Application.loadedLevel);
+	}
 }
