@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54881d5768623aa4eb00f8cf67b03503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialSceneName: sceneJulien
+  tutorialSceneName: level1
   level1SceneName: sceneJulien
   level2SceneName: sceneJulien
   level3SceneName: sceneJulien
