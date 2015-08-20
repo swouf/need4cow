@@ -13,6 +13,8 @@ public class mainMenuBehaviour : MonoBehaviour {
 
 	public string tutorialSceneName;
 	public string level1SceneName;
+	public string level2SceneName;
+	public string level3SceneName;
 
 
 	// Use this for initialization
