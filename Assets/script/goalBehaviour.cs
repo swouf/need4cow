@@ -18,8 +18,7 @@ public class goalBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		thisCollider = GetComponent<BoxCollider2D>();
-		if(thisCollider == null)
-		{
+		if(thisCollider == null) {
 			Debug.LogWarning(this.ToString() + " : Impossible de récupérer le collider.");
 		}
 		mainCamera = GameObject.FindWithTag("MainCamera");

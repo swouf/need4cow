@@ -11,7 +11,6 @@ using System.Collections;
 
 public class escapeKeyBehaviour : MonoBehaviour {
 
-	public string menuSceneName;
 	private bool quitKey;
 
 	// Use this for initialization
@@ -20,12 +19,12 @@ public class escapeKeyBehaviour : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-
 		quitKey = Input.GetKeyDown("escape");
 
 		if(quitKey){
 			this.loadSceneMenu();
 		}
+		else if()
 	}
 	void loadSceneMenu() {
 		Debug.Log("Loading scene : " + menuSceneName);

@@ -83,9 +83,9 @@ public class playerBehaviour : MonoBehaviour {
 
 		if(isDead) {
 			timeBeforeReboot -= Time.deltaTime;
-		}
-		if(timeBeforeReboot <= 0.0){
-			Application.LoadLevel(Application.loadedLevel);
+			if(timeBeforeReboot <= 0.0){
+				
+			}
 		}
 
 		// Checking de la position
