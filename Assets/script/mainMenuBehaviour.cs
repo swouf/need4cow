@@ -33,6 +33,14 @@ public class mainMenuBehaviour : MonoBehaviour {
 		Debug.Log("Loading scene : " + level1SceneName);
 		Application.LoadLevel(level1SceneName);
 	}
+	void loadSceneLevel2() {
+		Debug.Log("Loading scene : " + level2SceneName);
+		Application.LoadLevel(level2SceneName);
+	}
+	void loadSceneLevel3() {
+		Debug.Log("Loading scene : " + level3SceneName);
+		Application.LoadLevel(level3SceneName);
+	}
 	void quit() {
 		Debug.Log("Quitting...");
 		Application.Quit();

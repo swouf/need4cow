@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/scene/level1.unity
   - enabled: 1
     path: Assets/scene/level2.unity
+  - enabled: 1
+    path: Assets/scene/scene_esteban.unity
