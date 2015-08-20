@@ -22,9 +22,11 @@ public class playerBehaviour : MonoBehaviour {
 	// animation
 	private Animator	thisAnim;
 	// Player dans la caméra gestion
-	float minPosX = 0;
-	float camPosX = 0;
-	float offsetPlayerX = 0;
+	private float minPosX = 0;
+	private float camPosX = 0;
+	private float offsetPlayerX = 0;
+	// coins counter
+	private int coinsCounter;
 
 	/*!
 	 * \brief Vitesse du personnage en px/s
@@ -40,6 +42,7 @@ public class playerBehaviour : MonoBehaviour {
 		Debug.Log("Player initialised.");
 		jumpKey	= false;
 		isDead	= false;
+		coinsCounter = 0;
 		if(timeBeforeReboot <= 0.0) {
 			timeBeforeReboot = 1.0f;
 		}
@@ -141,5 +144,10 @@ public class playerBehaviour : MonoBehaviour {
 	void stop() {
 		thisAnim.enabled = false;
 		speed = 0.0f;
+	}
+	void addCoins(int coinsToAdd) {
+		Debug.Log(coinsToAdd + " pièce(s) ont été ramassées.");
+		coinsCounter += coinsToAdd;
+		Debug.Log("Total des pièces ramassées : " + coinsCounter);
 	}
 }
