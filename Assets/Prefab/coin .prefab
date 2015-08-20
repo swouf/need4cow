@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217208b69a0b68540b575b88110a1b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animTime: 0
-  animHeight: 0
+  animTime: .400000006
+  animHeight: 3
 --- !u!212 &21250418
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -114,6 +114,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: animHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: animTime
+      value: .400000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

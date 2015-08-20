@@ -1479,11 +1479,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11471146, guid: 743812f44aa3a2941bb81c6a865609d5, type: 2}
       propertyPath: animTime
-      value: 1
+      value: .360000014
       objectReference: {fileID: 0}
     - target: {fileID: 11471146, guid: 743812f44aa3a2941bb81c6a865609d5, type: 2}
       propertyPath: animHeight
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 743812f44aa3a2941bb81c6a865609d5, type: 2}

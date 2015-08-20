@@ -34,7 +34,7 @@ public class coinBehaviour : MonoBehaviour {
 
 			transform.position = new Vector2(posX, posY);
 			if(timeElapsed >= animTime) {
-				GameObject.Destroy(this);
+				Destroy(this.gameObject);
 			}
 		}
 	}
