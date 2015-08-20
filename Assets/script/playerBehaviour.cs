@@ -11,7 +11,7 @@ using System.Collections;
 public class playerBehaviour : MonoBehaviour {
 
 	private bool		jumpKey;
-	private Rigidbody2D	thisRB;
+	private Rigidbody2D	thisRB = null;
 	private bool		isOnGround;
 	private bool		isDead;
 
@@ -19,8 +19,8 @@ public class playerBehaviour : MonoBehaviour {
 	private AudioSource source;
 
 	// camera
-	private GameObject	mainCamera;
-	private Camera		mainCamComp;
+	private GameObject	mainCamera = null;
+	private Camera		mainCamComp = null;
 
 	// animation
 	private Animator	thisAnim;
@@ -32,6 +32,7 @@ public class playerBehaviour : MonoBehaviour {
 
 	// coins counter
 	private int coinsCounter;
+	private GameObject coinCounterObj;
 
 	// level object
 	private GameObject levelObj = null;
@@ -77,6 +78,16 @@ public class playerBehaviour : MonoBehaviour {
 		if(levelObj == null) {
 			Debug.LogWarning("Impossible de récupérer l'objet FaderLayer !");
 		}
+
+		coinCounterObj = GameObject.Find("coinCounter");
+		if(coinCounterObj == null) {
+			Debug.LogWarning("Impossible de récupérer l'objet coinCounter !");
+		}
+		// À enlever <<<<<<<<<<<<<<
+		else {
+			Debug.Log("Nom de l'objet récupéré : " + coinCounterObj.ToString());
+		}
+		// >>>>>>>>>>>>>>>>>>>>>>>>
 	}
 
 	/*!
@@ -160,6 +171,7 @@ public class playerBehaviour : MonoBehaviour {
 	void addCoins(int coinsToAdd) {
 		Debug.Log(coinsToAdd + " pièce(s) ont été ramassées.");
 		coinsCounter += coinsToAdd;
+		coinCounterObj.SendMessage("setValue", coinsCounter);
 		Debug.Log("Total des pièces ramassées : " + coinsCounter);
 	}
 	/*void setLevelObj(GameObject obj) {
